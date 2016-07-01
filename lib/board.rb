@@ -13,6 +13,10 @@ class Board
     end
   end
 
+  def columns
+    rows.transpose
+  end
+
   private
 
     def fill_in_row(row)
