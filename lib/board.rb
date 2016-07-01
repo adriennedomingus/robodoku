@@ -1,23 +1,31 @@
+require_relative './cell'
+
 class Board
   attr_reader :input
 
   def initialize(input)
     @input = input
+    @board = create_cells
   end
 
-  def rows
-    rows = input.split("\n").map(&:chars)
-    rows.each do |row|
-      row.map!(&:to_i)
-      fill_in_row(row)
+  def create_cells
+    board = rows.map.with_index do |row, row_index|
+      row = row.map.with_index do |element, element_index|
+        Cell.new(element, row_index, element_index)
+      end
     end
-  end
-
-  def columns
-    rows.transpose
+    board.flatten
   end
 
   private
+
+    def rows
+      rows = input.split("\n").map(&:chars)
+      rows.each do |row|
+        row.map!(&:to_i)
+        fill_in_row(row)
+      end
+    end
 
     def fill_in_row(row)
       until row.length == 9
