@@ -34,6 +34,10 @@ class Solver
     board
   end
 
+  def solution
+    solve.board.map(&:value).join.scan(/.{9}/).join("\n")
+  end
+
   private
     def section_mates(cell, type)
       mates = board.board.select do |element|
