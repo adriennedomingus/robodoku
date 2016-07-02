@@ -20,5 +20,9 @@ class Solver
   end
 
   def square_mates(cell)
+    mates = board.select do |element|
+      element.square == cell.square
+    end
+    mates.map(&:value)
   end
 end
