@@ -17,4 +17,14 @@ class BoardTest < MiniTest::Test
     assert_equal(8, result[75].row)
     assert_equal(4, result[31].column)
   end
+
+  def test_unsolved_cells
+    assert_equal(46, @board.unsolved_cells.length)
+  end
+
+  def test_unsolved_cells_all_have_value_of_zero
+    @board.unsolved_cells.each do |cell|
+      assert(cell.value == 0)
+    end
+  end
 end

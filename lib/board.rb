@@ -16,6 +16,12 @@ class Board
     board.flatten
   end
 
+  def unsolved_cells
+    @board.select do |cell|
+      cell.unsolved?
+    end
+  end
+
   private
 
     def rows(input)
