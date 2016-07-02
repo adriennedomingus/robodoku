@@ -6,23 +6,22 @@ class Solver
   end
 
   def row_mates(cell)
-    mates = board.select do |element|
-      element.row == cell.row
-    end
-    mates.map(&:value)
+    mates(cell, "row")
   end
 
   def column_mates(cell)
-    mates = board.select do |element|
-      element.column == cell.column
-    end
-    mates.map(&:value)
+    mates(cell, "column")
   end
 
   def square_mates(cell)
-    mates = board.select do |element|
-      element.square == cell.square
-    end
-    mates.map(&:value)
+    mates(cell, "square")
   end
+
+  private
+    def mates(cell, type)
+      mates = board.select do |element|
+        element.send(type) == cell.send(type)
+      end
+      mates.map(&:value)
+    end
 end
