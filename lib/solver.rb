@@ -2,7 +2,7 @@ class Solver
   attr_reader :board
 
   def initialize(board)
-    @board = board.board
+    @board = board
   end
 
   def row_mates(cell)
@@ -25,9 +25,18 @@ class Solver
     possibilities
   end
 
+  def solve
+    until board.solved?
+      board.board.each do |cell|
+        solve_for_cell(cell)
+      end
+    end
+    board
+  end
+
   private
     def section_mates(cell, type)
-      mates = board.select do |element|
+      mates = board.board.select do |element|
         element.send(type) == cell.send(type)
       end
       mates.map(&:value)
@@ -39,5 +48,11 @@ class Solver
 
     def all_possibliities
       [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    end
+
+    def solve_for_cell(cell)
+      if cell.unsolved? && possible_cell_values(cell).length == 1
+        cell.value = possible_cell_values(cell)[0]
+      end
     end
 end
