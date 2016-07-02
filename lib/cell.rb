@@ -1,3 +1,7 @@
+require 'minitest/autorun'
+require 'minitest/pride'
+require_relative '../lib/cell'
+
 class Cell
   attr_reader :value, :row, :column, :square
 
@@ -6,6 +10,10 @@ class Cell
     @row = row_index
     @column = element_index
     @square = square_number(row_index, element_index)
+  end
+
+  def unsolved?
+    value == 0
   end
 
   private
