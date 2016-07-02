@@ -6,6 +6,10 @@ class Solver
   end
 
   def row_mates(cell)
+    mates = board.select do |element|
+      element.row == cell.row
+    end
+    mates.map(&:value)
   end
 
   def column_mates(cell)

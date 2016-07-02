@@ -18,4 +18,9 @@ class SolverTest < MiniTest::Test
     result = [7, 0, 0, 8, 0, 4, 0, 0, 1]
     assert_equal(result, @solver.column_mates(@solver.board[17]))
   end
+
+  def test_row_mates
+    result = [6, 0, 0, 3, 0, 5, 0, 0, 1]
+    assert_equal(result, @solver.row_mates(@solver.board[72]))
+  end
 end
