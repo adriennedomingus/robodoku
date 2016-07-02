@@ -3,7 +3,8 @@ require 'minitest/pride'
 require_relative '../lib/cell'
 
 class Cell
-  attr_reader :value, :row, :column, :square
+  attr_accessor :value
+  attr_reader :row, :column, :square
 
   def initialize(value, row_index, element_index)
     @value = value

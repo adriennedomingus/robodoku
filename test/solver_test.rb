@@ -7,6 +7,15 @@ class SolverTest < MiniTest::Test
 
   def setup
     board = Board.new(given_input)
+    # [8, 0, 0, 5, 0, 4, 0, 0, 7,
+    #  0, 0, 5, 0, 3, 0, 9, 0, 0,
+    #  0, 9, 0, 7, 0, 1, 0, 6, 0,
+    #  1, 0, 3, 0, 0, 0, 2, 0, 8,
+    #  0, 4, 0, 0, 0, 0, 0, 5, 0,
+    #  2, 0, 7, 8, 1, 3, 6, 0, 4,
+    #  0, 3, 0, 9, 0, 2, 0, 8, 0,
+    #  0, 0, 2, 0, 7, 0, 5, 0, 0,
+    #  6, 0, 0, 3, 0, 5, 0, 0, 1]
     @solver = Solver.new(board)
   end
 
@@ -27,5 +36,10 @@ class SolverTest < MiniTest::Test
   def test_square_mates
     result = [5, 0, 4, 0, 3, 0, 7, 0, 1]
     assert_equal(result, @solver.square_mates(@solver.board[3]))
+  end
+
+  def test_possible_values
+    result = [4, 7]
+    assert_equal(result, @solver.possible_cell_values(@solver.board[9]))
   end
 end
