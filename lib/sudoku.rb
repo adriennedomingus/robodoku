@@ -8,7 +8,7 @@ end
 
 if __FILE__ == $0
   input = File.read(ARGV[0])
-  board = Board.new(input)
+  board = Board.new(input).board
   solver = Solver.new(board)
   solution = solver.solve(board)
   puts solution

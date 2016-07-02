@@ -1,15 +1,14 @@
 require_relative './cell'
 
 class Board
-  attr_reader :input
+  attr_reader :board
 
   def initialize(input)
-    @input = input
-    @board = create_cells
+    @board = create_cells(input)
   end
 
-  def create_cells
-    board = rows.map.with_index do |row, row_index|
+  def create_cells(input)
+    board = rows(input).map.with_index do |row, row_index|
       row = row.map.with_index do |element, element_index|
         Cell.new(element, row_index, element_index)
       end
@@ -19,7 +18,7 @@ class Board
 
   private
 
-    def rows
+    def rows(input)
       rows = input.split("\n").map(&:chars)
       rows.each do |row|
         row.map!(&:to_i)
