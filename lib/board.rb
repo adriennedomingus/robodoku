@@ -22,6 +22,10 @@ class Board
     end
   end
 
+  def solved?
+    unsolved_cells.length == 0
+  end
+
   private
 
     def rows(input)
