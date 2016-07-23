@@ -1,7 +1,3 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require_relative '../lib/cell'
-
 class Cell
   attr_accessor :value
   attr_reader :row, :column, :square
